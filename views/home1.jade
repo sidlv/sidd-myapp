@@ -1,0 +1,123 @@
+extend layout
+
+block content
+  form(method='POST')
+   style.
+    body {
+    font-family: "Lato", sans-serif;
+    }
+    .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 150px;
+    }
+    .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+    }
+    .sidenav a:hover, .offcanvas a:focus{
+    color: #344059;
+    }
+    .container {
+    padding: 16px;
+    }
+    span.psw {
+    float: right;
+    padding-top: 10px;
+    }
+    .sidenav .closebtn {
+    position: absolute;
+    top: 40px;
+    right: 30px;
+    font-size: 20px;
+    margin-left: 50px;
+    }
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+    width: auto;
+    padding: 5px 10px;
+    background-color: #f44336;
+    }
+    .modal-content {
+    background-color: #fefefe;
+    margin: 20% 15% ; /* 5% from the top, 15% from the bottom and centered */
+    border: 3px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+    }
+
+    /*for the display of home page*/
+    #main {
+    transition: margin-left .5s;
+    //padding: 16px;
+    position: relative;
+    left: 15%;;
+    top: 5%;
+    width: 25%;
+    background-size:auto;
+    }
+    @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 10px;}
+    .sidenav a {font-size: 18px;}
+    }
+  body(background= 'images/back5.jpg')
+    #mySidenav.sidenav
+      a.closebtn(href='javascript:void(0)', onclick='closeNav()') x
+      a(onclick="document.getElementById('id01').style.display='block'", style='width:auto;') ACCOUNT
+      #id01.modal
+        form.modal-content.animate(method='POST')
+          .container
+            label(for='cname')
+            b Coast Name
+            input.form-control(type='text',placeholder='Enter Coast Name', name='cname', require='')
+          .container
+            label(for='accountname')
+            b Account Name
+            input.form-control(type='text', placeholder='Enter Account Name', name='accountname', required='')
+          .container
+            label(for='ausername')
+            b User Name
+            input(type='text', placeholder='Enter Your Name', name='ausername', required='')
+            button.btn.btn-primary(type='submit') Save
+          .container(style='background-color:#f1f1f1')
+            button.cancelbtn(type='button', onclick="document.getElementById('id01').style.display='none'") Cancel
+      script.
+        // Get the modal
+        var modal = document.getElementById('id01');
+        When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+        modal.style.display = "none";
+        }
+        }
+      a(href='/Project') PROJECT
+      a(href='#')         USER
+      a(href='#')         LMS
+      a(href='#')         LWS
+    #main
+      h2 
+       b Service Delivery Excellence
+      p
+        | To Initiate
+      span(style='font-size:25px;cursor:pointer,backgroung-color:green', onclick='openNav()') PUSH
+    script.
+      function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+      }
+      function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+      }
+
+      
